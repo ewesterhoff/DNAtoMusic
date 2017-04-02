@@ -4,12 +4,11 @@ from midiutil import MIDIFile
 
 #first iteration
 #results = ['A', 'G', 'T', 'C', 'A', 'G', 'G', 'T', 'C', 'A', 'A', 'C']
-#eventually results will be imported from txt file
-#file = open("sampleDNA2.txt", "r")
+
 results = []
-with open("sampleDNA2.txt") as f:
+with open("sampleDNA1.txt") as f:
   while True:
-    c = f.read(3)
+    c = f.read(1)
     if not c:
       break
     results.append(c)
