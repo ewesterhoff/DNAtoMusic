@@ -6,7 +6,7 @@ from midiutil import MIDIFile
 #results = ['A', 'G', 'T', 'C', 'A', 'G', 'G', 'T', 'C', 'A', 'A', 'C']
 
 results = []
-with open("sampleDNA1.txt") as f:
+with open("sampleDNA2.txt") as f:
   while True:
     c = f.read(1)
     if not c:
@@ -34,7 +34,7 @@ track    = 0
 channel  = 0
 time     = 0    # In beats
 duration = 1    # In beats
-tempo    = 60   # In BPM
+tempo    = 140   # In BPM
 volume   = 100  # 0-127, as per the MIDI standard
 
 MyMIDI = MIDIFile(1, adjust_origin = True)  # One track

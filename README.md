@@ -8,3 +8,9 @@ The overall goal of the project is to import the midi file into Sibelius, where 
 
 ##So, where's the biology?
 The biology of this project comes from the text file that is being imported.  (To be determined at a later date) In addition, a metaphor for the random mutations that occur would be the mistakes that the live performer makes.
+
+##first iteration
+Contained in the first iteration project folder is the basic files to read and write midi files.  These are the basis for the rest of the program
+
+##second iteration
+This version of the project begins to implement music theory in the generation of midi files.  The reading file will also be updated to be able to interpret them.
