@@ -3,13 +3,23 @@ import csv
 from midiutil import MIDIFile
 
 #first iteration
-results = ['A', 'G', 'T', 'C', 'A', 'G', 'G', 'T', 'C', 'A', 'A', 'C']
+#results = ['A', 'G', 'T', 'C', 'A', 'G', 'G', 'T', 'C', 'A', 'A', 'C']
 #eventually results will be imported from txt file
+#file = open("sampleDNA2.txt", "r")
+results = []
+with open("sampleDNA2.txt") as f:
+  while True:
+    c = f.read(3)
+    if not c:
+      break
+    results.append(c)
+print(results)
+
+
 
 #degrees  = [60, 62, 64, 65, 67, 69, 71, 72]  # MIDI note number
 degrees = []
 for i in results:
-    #i = results[entry]
     if i == 'A':
         pitch = 60
     if i == 'T':
