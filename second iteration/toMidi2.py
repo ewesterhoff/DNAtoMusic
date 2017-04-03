@@ -15,11 +15,11 @@ with open("sampleDNA3.txt") as f:
 
 #degrees  = [60, 62, 64, 65, 67, 69, 71, 72]  # MIDI note number
 degrees = []
+speeds = []
 for a in results:
     i = a[0:2] #determines pitch
     c = a[2] #determines...something?
 
-    print(i)
     if i == 'AA':
         pitch = 60
     if i == 'AT':
@@ -56,21 +56,33 @@ for a in results:
     if i == 'GG':
         pitch = 84
 
+    if c == 'A':
+        duration = 1
+    if c == 'T':
+        duration = 2
+    if c == 'C':
+        duration = .5
+    if c == 'G':
+        duration = 1.5
+
     degrees.append(pitch)
+    speeds.append(duration)
 
 print(degrees)
 track    = 0
 channel  = 0
 time     = 0    # In beats
-duration = 1    # In beats
+#duration = 1    # In beats
 tempo    = 110   # In BPM
 volume   = 100  # 0-127, as per the MIDI standard
 
 MyMIDI = MIDIFile(1, adjust_origin = True)  # One track
 MyMIDI.addTempo(track, time, tempo)
+currentTime = time
 
 for i, pitch in enumerate(degrees):
-    MyMIDI.addNote(track, channel, pitch, time + i, duration, volume)
+    MyMIDI.addNote(track, channel, pitch, currentTime, speeds[i], volume)
+    currentTime = currentTime+speeds[i]
 
 with open("DNAmusic.mid", "wb") as output_file:
     MyMIDI.writeFile(output_file)
