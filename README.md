@@ -14,3 +14,7 @@ Contained in the first iteration project folder is the basic files to read and w
 
 ##second iteration
 This version of the project begins to implement music theory in the generation of midi files.  The reading file will also be updated to be able to interpret them.
+
+##third iteration
+This version will explore more complex music generation algorithms.  The final DNA file will be chosen,
+and be used in this iteration along with sample files for testing.
