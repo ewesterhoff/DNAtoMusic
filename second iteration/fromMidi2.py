@@ -1,32 +1,88 @@
 import mido
 import csv
 
-mid = mido.MidiFile('firstSteps.mid')
+mid = mido.MidiFile('DNAmusic.mid')
+
 notes = []
+noteLengths = []
 for msg in mid.play():
     notes.append(msg.note)
+    noteLengths.append(msg.time)
 
-length = len(notes)
-length = int(length)
+lengthSong = int(len(notes))
+lengthOfNoteLengths = int(len(noteLengths))
 
-for i in range(0, length//2):
+for i in range(0, lengthSong//2):
     notes[i] = notes[i*2]
-print(notes)
+
+durations = []
+blanks = []
+
+# for i in range(lengthOfNoteLengths):
+#     if noteLengths[i] != 0
+#         durations.append(noteLengths[i])
+# print(durations)
 
 sequence = []
-for i in notes:
-    if i == 60:
-        acid = 'A'
-    if i == 64:
-        acid = 'T'
-    if i == 67:
-        acid = 'C'
-    if i == 72:
-        acid = 'G'
-    sequence.append(acid)
-print(sequence)
+sequenceU = []
+startingPitch = 60 #sets the key to C major
+for pitch in notes:
+    if pitch == startingPitch + 0:
+        acid = 'AA'
+    if pitch == startingPitch + 2:
+        acid = 'AT'
+    if pitch == startingPitch + 4:
+        acid = 'AC'
+    if pitch == startingPitch + 5:
+        acid = 'AG'
 
-file = open("DNAfromMidi1.txt", "w")
+    if pitch == startingPitch + 7:
+        acid = 'TA'
+    if pitch == startingPitch + 9:
+        acid = 'TT'
+    if pitch == startingPitch + 11:
+        acid = 'TC'
+    if pitch == startingPitch + 12:
+        acid = 'TG'
+
+    if pitch == startingPitch + 14:
+        acid = 'CA'
+    if pitch == startingPitch + 16:
+        acid = 'CT'
+    if pitch == startingPitch + 17:
+        acid = 'CC'
+    if pitch == startingPitch + 19:
+        acid = 'CG'
+
+    if pitch == startingPitch + 21:
+        acid = 'GA'
+    if pitch == startingPitch + 23:
+        acid = 'GT'
+    if pitch == startingPitch + 24:
+        acid = 'GC'
+    if pitch == startingPitch + 26:
+        acid = 'GG'
+    sequence.append(acid)
+
+for l in noteLengths:
+    if l == .25:
+        thirdAcid = 'C'
+        sequenceU.append(thirdAcid)
+    if l == .5:
+        thirdAcid = 'A'
+        sequenceU.append(thirdAcid)
+    if l == .75:
+        thirdAcid = 'G'
+        sequenceU.append(thirdAcid)
+    if l == 1:
+        thirdAcid = 'T'
+        sequenceU.append(thirdAcid)
+
+    
+print(sequence)
+print(sequenceU)
+
+file = open("DNAfromMidi2.txt", "w")
 for i in sequence:
-    file.write(i)
+    file.write(i+"")
 file.close()

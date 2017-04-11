@@ -6,7 +6,7 @@ from midiutil import MIDIFile
 #results = ['A', 'G', 'T', 'C', 'A', 'G', 'G', 'T', 'C', 'A', 'A', 'C']
 
 results = []
-with open("sampleDNA3.txt") as f:
+with open("sampleDNA5.txt") as f:
   while True:
     c = f.read(3)
     if not c:
@@ -19,42 +19,43 @@ speeds = []
 for a in results:
     i = a[0:2] #determines pitch
     c = a[2] #determines...something?
+    startingPitch = 60 #determines key 60 = C MAJOR
 
     if i == 'AA':
-        pitch = 60
+        pitch = startingPitch + 0
     if i == 'AT':
-        pitch = 62
+        pitch = startingPitch + 2
     if i == 'AC':
-        pitch = 64
+        pitch = startingPitch + 4
     if i == 'AG':
-        pitch = 65
+        pitch = startingPitch + 5
 
     if i == 'TA':
-        pitch = 67
+        pitch = startingPitch + 7
     if i == 'TT':
-        pitch = 69
+        pitch = startingPitch + 9
     if i == 'TC':
-        pitch = 71
+        pitch = startingPitch + 11
     if i == 'TG':
-        pitch = 72
+        pitch = startingPitch + 12
 
     if i == 'CA':
-        pitch = 74
+        pitch = startingPitch + 14
     if i == 'CT':
-        pitch = 76
+        pitch = startingPitch + 16
     if i == 'CC':
-        pitch = 77
+        pitch = startingPitch + 17
     if i == 'CG':
-        pitch = 79
+        pitch = startingPitch + 19
 
     if i == 'GA':
-        pitch = 81
+        pitch = startingPitch + 21
     if i == 'GT':
-        pitch = 83
+        pitch = startingPitch + 23
     if i == 'GC':
-        pitch = 84
+        pitch = startingPitch + 24
     if i == 'GG':
-        pitch = 84
+        pitch = startingPitch + 26
 
     if c == 'A':
         duration = 1
@@ -73,7 +74,7 @@ track    = 0
 channel  = 0
 time     = 0    # In beats
 #duration = 1    # In beats
-tempo    = 110   # In BPM
+tempo    = 120   # In BPM
 volume   = 100  # 0-127, as per the MIDI standard
 
 MyMIDI = MIDIFile(1, adjust_origin = True)  # One track
