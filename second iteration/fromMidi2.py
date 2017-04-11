@@ -10,7 +10,6 @@ for msg in mid.play():
     noteLengths.append(msg.time)
 
 lengthSong = int(len(notes))
-lengthOfNoteLengths = int(len(noteLengths))
 
 for i in range(0, lengthSong//2):
     notes[i] = notes[i*2]
@@ -78,11 +77,15 @@ for l in noteLengths:
         thirdAcid = 'T'
         sequenceU.append(thirdAcid)
 
-    
-print(sequence)
-print(sequenceU)
+finalSequence = []
+lengthSequence = int(len(sequenceU))
+
+for a in range(0, lengthSequence):
+    nuc = sequence[a] + sequenceU[a]
+    finalSequence.append(nuc)
+print(finalSequence)
 
 file = open("DNAfromMidi2.txt", "w")
-for i in sequence:
+for i in finalSequence:
     file.write(i+"")
 file.close()
