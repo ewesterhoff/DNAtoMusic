@@ -20,15 +20,21 @@ def createFirstTwoAcids(notes):
     sequence = []
     sequenceU = []
     startingPitch = 60 #sets the key to C major
-    notesInKey = [0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26]
+    #notesInKey = [0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26]
+    notesInKey = [0,2,4,5,7,9,10,8,12,14,17,19,21,16,11,23] #increased key pattern
     acidsList = ['AA', 'AT', 'AC', 'AG',
                  'TA', 'TT', 'TC', 'TG',
                  'CA', 'CT', 'CC', 'CG',
                  'GA', 'GT', 'GC', 'GG']
     possibleNumNotes = int(len(notesInKey))
-    for pitch in notes:
+    song_iter = iter(notes)
+    for pitch in song_iter:
         for i in range(0, possibleNumNotes):
-            if pitch == startingPitch+notesInKey[i]:
+            if pitch == startingPitch + 8:
+                acid = acidsList[i]
+                next(song_iter)
+                next(song_iter)
+            elif pitch == startingPitch+notesInKey[i]:
                 acid = acidsList[i]
         sequence.append(acid)
     return sequence
@@ -60,6 +66,7 @@ def writeToText(data):
 myNotes, myNoteLengths = readInMidi('DNAmusic3.mid')
 firstTwo = createFirstTwoAcids(myNotes)
 third = createThirdAcid(myNoteLengths)
+
 finalSequence = []
 lengthSequence = int(len(third))
 
