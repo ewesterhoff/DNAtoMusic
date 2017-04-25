@@ -9,7 +9,7 @@ def formatDNAFile(rawFile):
       while True:
         c = f.read(3)
         if not c:
-          break
+            break
         results.append(c)
     return results
 
@@ -172,7 +172,7 @@ def connectNotes(pitch1, difference):
 ##still needs a lot of work
 ##should append the new ones in the right spots
 def findDifference(pitches, speeds, startingPitch):
-    lastPitch = startingPitch
+    lastPitch = 0
     for i, pitch in enumerate(pitches):
         differenceInPitch = pitch - lastPitch
         newNotes = connectNotes(pitch-differenceInPitch, differenceInPitch)
@@ -190,7 +190,6 @@ def sixthTurnaround(pitches, speeds, startingPitch):
 
     for i in range(len(pitches)):
         if (pitches[i] - startingPitch == 8) and (speeds[i] != (1/3)):
-            print('dude')
             newPitches.insert(i+1, pitches[i]-4)
             newSpeeds.insert(i, 1)
             newPitches.insert(i+1, pitches[i]-1)
@@ -211,10 +210,8 @@ def afterSomeHalfs(pitches, speeds, startingPitch):
 
 def start():
     startingPitch = 60 #determines key 60 = C MAJOR
-    formattedForInsert = formatDNAFile("chromo8.txt")
+    formattedForInsert = formatDNAFile("chromo8no2.txt")
     myDegrees, mySpeeds = textToPitches(formattedForInsert, startingPitch)
-    print(myDegrees)
-    print(mySpeeds)
     myDegrees, mySpeeds = findDifference(myDegrees, mySpeeds, startingPitch)
     myDegrees, mySpeeds = sixthTurnaround(myDegrees, mySpeeds, startingPitch)
     myDegrees, mySpeeds = afterSomeHalfs(myDegrees, mySpeeds, startingPitch)
